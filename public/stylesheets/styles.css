@@ -1,0 +1,705 @@
+body {
+    font-family: 'Bree Serif', serif;
+    font-size: 16px;
+    width: 100%;
+    background-color: #afcFff;
+    overflow-x: hidden;
+}
+
+h1 {
+    font-size: 4em;
+}
+
+a {
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.middle-container {
+    background-image: url("/images/greyzz.png");
+    margin: 60px 5% 90px;
+    width: 90%;
+    overflow: auto;
+    box-shadow: 0 5px 10px #999999;
+}
+
+.selects-container {
+    box-shadow: 0 2px 3px #777777;
+    margin: 0 auto;
+    width: 100%;
+    height: 45px;
+    color: #ffffff;
+    background-color: #3678f9;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.select {
+    text-shadow: 0 1px 1px #aaaaaa;
+    padding: 7px 0 0 0;
+    width: 20%;
+    font-size: 1.25em;
+    text-align: center;
+    float: left;
+    z-index: 10;
+    position: relative;
+}
+
+.home-page, .about-select, .ministries-select, .media-select, .giving-select {
+    text-shadow: 0 1px 1px #fffffa;
+    display: block;
+}
+
+.home-page:hover, .about-select:hover, .ministries-select:hover, .media-select:hover, .giving-select:hover {
+    padding: 0 0 0 0;
+    font-size: 1.05em;
+    font-weight: bold;
+}
+
+.home-mobile, .about-mobile, .ministries-mobile, .media-mobile, .giving-mobile {
+    text-shadow: 0 1px 1px #fffffa;
+    top: 40%;
+    left: 38%;
+    position: absolute;
+    line-height: 1em;
+    font-size: 2em;
+    display: none;
+}
+
+.home-mobile:hover, .about-mobile:hover, .ministries-mobile:hover, .media-mobile:hover, .giving-mobile:hover {
+    padding: 0 0 0 0;
+    font-size: 2.1em;
+    font-weight: bold;
+}
+
+.title-header {
+    margin: 35px auto 10px;
+    width: 100%;
+    color: #030F59;
+    text-align: center;
+    text-shadow: 0 3px 3px #aaaaaa;
+}
+
+.title {
+    margin: 0 10%;
+    font-size: 4em;
+    color: #ffffff;
+    background-color: #030F59;
+    box-shadow: 0 5px 10px #cccccc;
+    padding-bottom: 12px;
+}
+
+.title span{
+    vertical-align: text-top;
+    font-size: .825em;
+}
+
+.images-container {
+    margin: 5px auto 10px;
+    width: 90%;
+    height: 500px;
+    z-index: 0;
+}
+
+.flexslider {
+    margin: 10px auto 0;
+    width: 60%;
+    height: 460px;
+    box-shadow: 0 5px 10px 5px #cccccc;
+    z-index: 0;
+    position: relative;
+}
+
+.flexslider .slides img {
+    margin: 2px auto;
+    width: 100%;
+    height: 448px;
+}
+
+.flex-control-nav li{
+    z-index: 1;
+    border-radius: 50%;
+    box-shadow: 0 5px 5px #cccccc;
+}
+
+.flex-direction-nav {
+    display: none;
+}
+
+.welcome {
+    color: #ffffff;
+    /*background-color: #54a7fF;*/
+    background-color: #030F59;
+    margin: 10px auto;
+    padding: 2px 9px 9px;
+    width: 90%;
+    font-size: 1.25em;
+    text-shadow: 0 2px 2px #aaaaaa;
+    box-shadow: 0 5px 10px #cccccc;
+}
+
+.welcome-title {
+    margin: 10px auto;
+    width: 90%;
+    text-align: center;
+    font-size: 1.5em;
+}
+
+.welcome div {
+    width: 90%;
+    padding: 2px 9px 9px;
+    margin: 10px auto;
+}
+
+.featured {
+    margin: 20px 5% 5px;
+    width: 40%;
+    min-height: 360px;
+    float: left;
+    text-align: center;
+    color: #ffffff;
+    background-color: #030F59;
+    box-shadow: 0 5px 10px #cccccc;
+}
+
+.location {
+    width: 80%;
+    margin: 10px 10%;
+}
+
+.location img{
+    margin: 10px 10%;
+    width: 80%;
+}
+
+.location a {
+    color: #fff;
+    font-weight: bold;
+}
+
+.about {
+    width: 100%;
+    text-shadow: 0 2px 2px #aaaaaa;
+}
+
+.about-selects, .ministries-selects {
+    margin: 40px 10% 50px;
+    width: 80%;
+    color: #ffffff;
+    /*background-color: #54a7fF;*/
+    padding: 20px;
+}
+
+.beliefs-select, .mission-select, .staff-select {
+    margin: 10px 2.66666667%;
+    width: 28%;
+    height: 60px;
+    text-align: center;
+    font-size: 1.75em;
+    float: left;
+    padding-top: 8px;
+    background-color: #3678f9;
+    box-shadow: 0 5px 10px #cccccc;
+}
+
+.beliefs-select:hover, .mission-select:hover, .staff-select:hover {
+    font-weight: bold;
+}
+
+.about-section {
+    margin: 20px 10% 30px;
+    width: 80%;
+    color: #ffffff;
+    /*background-color: #54a7fF;*/
+    background-color: #030F59;
+    box-shadow: 0 5px 10px #cccccc;
+    padding: 20px;
+}
+
+.about-center {
+    text-align: center;
+}
+
+.beliefs {
+    margin-top: 70px;
+}
+
+.beliefs a {
+    color: #ffeecc;
+}
+
+.mission, .staff {
+    padding: 20px 20px 50px;
+    text-align: center;
+    margin-top: 70px;
+}
+
+.staff img{
+    box-shadow: 0 5px 10px #cccccc;
+}
+
+.staff-read-more-rick:hover, .staff-read-more-charlie:hover,
+.staff-read-less-rick:hover, .staff-read-less-charlie:hover {
+    font-weight: bold;
+}
+
+.staff-photo {
+    width: 40%;
+}
+
+.staff-bio {
+    margin: 0 17% 0 23%;
+    width:60%;
+    text-align: left;
+}
+
+.ministries {
+    width: 100%;
+    text-shadow: 0 2px 2px #aaaaaa;
+}
+.ministries a {
+    color: #ffffff;
+}
+
+.ministries a:hover {
+    font-weight: bold;
+}
+.worship-select, .children-select, .students-select,
+.college-select, .adults-select {
+    margin: 10px 1%;
+    width: 18%;
+    height: 60px;
+    text-align: center;
+    font-size: 1.75em;
+    float: left;
+    padding-top: 8px;
+    background-color: #3678f9;
+    box-shadow: 0 5px 10px #cccccc;
+}
+
+.worship-select:hover, .children-select:hover, .students-select:hover,
+.college-select:hover, .adults-select:hover{
+    font-weight: bold;
+}
+
+.ministries-section {
+    margin: 100px 10% 30px;
+    width: 80%;
+    color: #ffffff;
+    /*background-color: #54a7fF;*/
+    background-color: #030F59;
+    box-shadow: 0 5px 10px #cccccc;
+    padding: 20px;
+}
+
+.worship, .children, .students,
+.college, .adults{
+    padding: 10px 20px 50px;
+    text-align: justify;
+    margin-top: 70px;
+}
+
+.worship h2, .children h2, .students h2,
+.college h2, .adults h2{
+    text-align: center;
+}
+
+.children a{
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.students img{
+    margin: 0 25%;
+    width:  50%;
+    height: 250px;
+    box-shadow: 0 5px 10px #cccccc;
+}
+
+.text-container {
+    margin: 0 20%;
+    width: 60%;
+}
+
+
+.media {
+    width: 100%;
+    font-size: 3em;
+    text-align: center;
+    color: #030F59;
+    text-shadow: 0 2px 2px #aaaaaa;
+    padding-bottom: 20px;
+}
+
+.media-audio-select {
+    margin: 20px 5% 10px 15%;
+    width: 30%;
+    height: 60px;
+    text-align: center;
+    font-size: .8em;
+    float: left;
+    padding-top: 2px;
+    color: #ffffff;
+    background-color: #3678f9;
+    box-shadow: 0 5px 10px #cccccc;
+}
+
+.media-video-select {
+    margin: 20px 15% 10px 5%;
+    width: 30%;
+    height: 60px;
+    text-align: center;
+    font-size: .8em;
+    float: left;
+    padding-top: 2px;
+    color: #ffffff;
+    background-color: #3678f9;
+    box-shadow: 0 5px 10px #cccccc;
+}
+
+.media-audio-select:hover, .media-video-select:hover {
+    font-weight: bold;
+}
+
+.audio-container{
+    margin: 140px 10% 40px;
+    width: 80%;
+    height: 320px;
+    color: #ffffff;
+    /*background-color: #54a7fF;*/
+    background-color: #030F59;
+    box-shadow: 0 5px 10px #cccccc;
+}
+
+.media-audio {
+    margin: 10px 5%;
+    width:90%;
+    height: 200px;
+    float: left;
+    box-shadow: 0 5px 10px #aaaaaa;
+}
+
+.video-container{
+    margin: 140px 10% 0;
+    width: 80%;
+    height: 520px;
+    color: #ffffff;
+    /*background-color: #54a7fF;*/
+    background-color: #030F59;
+    box-shadow: 0 5px 10px #cccccc;
+}
+
+.media-video {
+    margin: 10px 5%;
+    width: 90%;
+    height: 400px;
+    float: left;
+    box-shadow: 0 5px 10px #aaaaaa;
+}
+
+.giving {
+    width: 100%;
+    text-shadow: 0 2px 2px #aaaaaa;
+    padding-bottom: 100px;
+}
+.giving a {
+    color: #ffffff;
+}
+
+.giving a:hover {
+    font-weight: bold;
+}
+
+.giving-section {
+    margin: 100px 10% 30px;
+    width: 80%;
+    color: #ffffff;
+    /*background-color: #54a7fF;*/
+    background-color: #030F59;
+    box-shadow: 0 5px 10px #cccccc;
+    padding: 20px;
+}
+
+.give {
+    margin: 20px 30%;
+    width: 40%;
+    height: 80px;
+    text-align: center;
+    padding-top: 1px;
+    background-color: #3678f9;
+    color: #ffffff;
+    text-shadow: 0 2px 2px #aaaaaa;
+    box-shadow: 0 5px 10px #cccccc;
+}
+
+.give h2:hover{
+    font-weight: bold;
+}
+
+.giving-section h2{
+    text-align: center;
+}
+
+.giving-faqs {
+    padding: 2px 10px 12px;
+    width: 100%;
+    background-color: #3678f9;
+    box-shadow: 0 5px 10px #cccccc;
+}
+
+.giving-faqs h3 {
+    text-align: center;
+}
+
+.giving-faqs h3:hover {
+    text-align: center;
+    font-weight: bold;
+}
+
+.footer {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #030F59;
+    width: 100%;
+    float: left;
+    text-align: center;
+    text-shadow: 0 2px 2px #aaaaaa;
+}
+
+.footer a{
+    color: #030F59;
+    text-decoration: none;
+}
+
+#bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #3678f9;
+    z-index: 1;
+    box-shadow: 0 -2px 5px #777777;
+}
+
+#bottom span{
+    position: absolute;
+    color: #ffffff;
+    text-shadow: 0 2px 2px #aaaaaa;
+    top: -10px;
+    left: 8px;
+    z-index: 5;
+    font-size: 3.5em;
+}
+
+.tweet-pic {
+    border: 1px solid #eeeeee;
+    margin-left: 0;
+    margin-top: 2px;
+    float: left;
+    display: inline;
+    vertical-align: top;
+}
+
+#bottom-outer {
+    margin: 0 auto;
+}
+
+#bottom-container {
+    width: 100%;
+    margin-left: 20px;
+    margin-top: 0;
+    text-align: center;
+    padding: 10px;
+    height: 60px;
+    background-color: #3678f9;
+}
+
+#bottom-container li{
+    width: 100%;
+    margin: 0 5%;
+}
+
+.tweet-text {
+    line-height: 1.125em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    margin-left: 5px;
+    padding-left: 5px;
+    padding-top: 10px;
+    padding-right: 5px;
+    color: #eeeeee;
+    background-color: #030F59;
+    width: 85%;
+    height: 55px;
+    display: inline;
+    float: left;
+    vertical-align: top;
+    font-size: 1.25em;
+}
+
+.tweet-text strong:hover{
+    font-size: 1.05em;
+    font-weight: bold;
+}
+
+@media (max-width: 800px){
+    body{
+        font-size: 12px;
+    }
+    .select {
+        padding: 15px 0 0 0;
+    }
+
+    .home-page, .about-select, .ministries-select, .media-select, .giving-select {
+        display: none;
+    }
+
+    .home-mobile, .about-mobile, .ministries-mobile, .media-mobile, .giving-mobile {
+        display: block;
+    }
+
+    .title {
+        font-size: 2.6em;
+    }
+
+    .title span{
+        vertical-align: text-top;
+        font-size: .8em;
+    }
+
+    .images-container {
+        margin: 5px auto 10px;
+        width: 90%;
+        height: 500px;
+        z-index: 0;
+    }
+
+    .flexslider {
+        margin: 10px auto 0;
+        width: 90%;
+        height: 460px;
+        z-index: 0;
+        border-radius: 5px;
+    }
+
+    .featured {
+        width: 90%;
+    }
+
+    .location {
+        margin: 10px 5%;
+    }
+
+    .beliefs-select, .mission-select, .staff-select {
+        margin: 10px 2.66666667% 0;
+        width: 28%;
+        height: 38px;
+        text-align: center;
+        font-size: 1em;
+        float: left;
+        padding-top: 10px;
+        box-shadow: 0 5px 10px #cccccc;
+    }
+
+    .staff-photo {
+        width: 80%;
+    }
+
+    .ministries-selects {
+        margin: 50px 0 0;
+        width: 100%;
+    }
+
+    .worship-select, .children-select, .students-select,
+    .college-select, .adults-select {
+        margin: 0 1%;
+        width: 18%;
+        height: 38px;
+        text-align: center;
+        font-size: .8em;
+        float: left;
+        padding-top: 10px;
+        box-shadow: 0 5px 10px #cccccc;
+    }
+
+    .students img{
+        margin: 0 10%;
+        width: 80%;
+        height: 250px;
+        box-shadow: 0 5px 10px #cccccc;
+    }
+
+    .text-container {
+        margin: 0 10%;
+        width: 80%;
+    }
+
+    .media {
+        width: 100%;
+        font-size: 2em;
+        text-align: center;
+        text-shadow: 0 2px 2px #aaaaaa;
+        padding-bottom: 20px;
+    }
+
+    .media-audio-select {
+        margin: 20px 7.5% 0 12.5%;
+        width: 30%;
+        height: 40px;
+        text-align: center;
+        font-size: .8em;
+        float: left;
+        padding-top: 4px;
+        color: #ffffff;
+        background-color: #3678f9;
+        box-shadow: 0 5px 10px #cccccc;
+    }
+
+    .media-video-select {
+        margin: 20px 12.5% 0 7.5%;
+        width: 30%;
+        height: 40px;
+        text-align: center;
+        font-size: .8em;
+        float: left;
+        padding-top: 4px;
+        color: #ffffff;
+        background-color: #3678f9;
+        box-shadow: 0 5px 10px #cccccc;
+    }
+
+    .footer {
+        font-size: 2em;
+    }
+
+    #bottom span{
+        position: absolute;
+        color: #ffffff;
+        text-shadow: 0 2px 2px #aaaaaa;
+        top: 5px;
+        left: 4px;
+        z-index: 5;
+        font-size: 3em;
+    }
+
+    .tweet-text {
+        line-height: 1.125em;
+        margin-top: 0;
+        margin-bottom: 15px;
+        margin-left: 5px;
+        padding-left: 5px;
+        padding-top: 10px;
+        padding-right: 5px;
+        color: #eeeeee;
+        background-color: #030F59;
+        width: 70%;
+        height: 55px;
+        display: inline;
+        float: left;
+        vertical-align: top;
+        font-size: 1.25em;
+    }
+}

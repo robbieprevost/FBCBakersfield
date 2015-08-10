@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+    <meta name="KEYWORDS" content="fellowship, Enrichment, 101, FBC, Awana, stine road, youth ignite, baptist, church, Bakersfield, CA,  sbc, faith, love, hope, grace, christian, ron harvey, rick, prevost, Lakeview Baptist, Sermons, Worship, Fellowship Baptist Church, Southern Baptist, " />
+    <meta name="DESCRIPTION" content="Reaching Bakersfield with the Gospel of Christ" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    <title>Fellowship Baptist Church</title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/flexslider/flexslider.css">
+    <link href="/angular-carousel/dist/angular-carousel.min.css" rel="stylesheet" type="text/css" />
+    <link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/stylesheets/styles.css">
+    <script src="/jquery/dist/jquery.js"></script>
+    <script src="/flexslider/jquery.flexslider.js"></script>
+    <script src="/angular/angular.js"></script>
+    <script src="/angular-flexslider/angular-flexslider.js"></script>
+    <script src="/angular-touch/angular-touch.min.js"></script>
+    <script src="/angular-carousel/dist/angular-carousel.min.js"></script>
+    <script src="/angular-route/angular-route.min.js"></script>
+    <script src="https://cdn.socket.io/socket.io-1.3.5.js"></script>
+    <script src="/javascripts/app.js"></script>
+</head>
+<body ng-controller="myController" ng-init="socket()">
+    <div class="page-container">
+        <div class="selects-container">
+            <div class="select" ng-click="workers.home()">
+                <div class="home-page" >Home</div>
+                <div class="home-mobile"><i class="fa fa-home"></i></div>
+            </div>
+            <div class="select" ng-click="workers.about()">
+                <div class="about-select">About</div>
+                <div class="about-mobile"><i class="fa fa-question"></i></div>
+            </div>
+            <div class="select" ng-click="workers.ministries()">
+                <div class="ministries-select">&nbsp;Ministries</div>
+                <div class="ministries-mobile"><i class="fa fa-child"></i></div>
+            </div>
+            <div class="select" ng-click="workers.media()">
+                <div class="media-select">&nbsp;&nbsp;Media</div>
+                <div class="media-mobile"><i class="fa fa-play-circle-o"></i></div>
+            </div>
+            <div class="select" ng-click="workers.giving()">
+                <div class="giving-select">Giving</div>
+                <div class="giving-mobile"><i class="fa fa-usd"></i></div>
+            </div>
+        </div>
+        <div class="middle-container">
+            <div class="home" ng-show="data.home == true">
+                <div class="title-header">
+                    <div class="title">
+                        <span></span>&nbsp;Fellowship Baptist Church&nbsp;<span></span>
+                    </div>
+                </div>
+
+                <div class="images-container">
+                    <flex-slider slide="i in data.images">
+                        <li>
+                            <img ng-src="{{i}}" width="100" height="100">
+                        </li>
+                    </flex-slider>
+                </div>
+
+                <div class="welcome">
+                    <p class="welcome-title">"A Place You Can Call Home"</p>
+                    <div>
+                        <p>
+                            At FBC you can expect to be warmly welcomed with a friendly handshake and a smile.
+                            Our entire staff has a deep love and desire to make a lasting impact on Bakersfield and Kern County.
+                            Whether you are searching for meaning in life or you are a committed follower of Christ, you are welcome here.
+                            You'll find answers to many of your questions are just a click away.
+                        </p>
+                        <p>
+                            If we can ever be of assistance to you or to your family, please do not hesitate to call upon us!
+                            It is our hope that you will visit us soon...and find out what all of the excitement is about!
+                        </p>
+                    </div>
+                </div>
+
+                <div class="featured-container">
+                    <div class="featured-repeat" ng-repeat="tweet in data.featuredTweets">
+                        <div class="featured">
+                            <h2>{{tweet.text}}</h2>
+                            <img ng-src="{{tweet.pic}}" width="90%" height="240px">
+                        </div>
+                    </div>
+                    <div class="featured location">
+                        <h2>Location:</h2>
+                        <img src="/images/FBCMap.jpg">
+
+                        <p>Fellowship Baptist Church (Between Wilson and Planz Rd.)</p>
+
+                        <h3>Fellowship Baptist Church</h3>
+                        <p>3001 Stine Road</p>
+                        <p>Bakersfield, CA 93309</p>
+
+                        <p>Phone: <a href="tel:16618334345">661-833-4345</a></p>
+                        <p>Fax: 661-833-4352</p>
+                        <p>Email: <a href="mailto:Karen@myfellowshipbaptist.com">Karen@myfellowshipbaptist.com</a></p>
+
+                        <p><a href="https://www.google.com/maps/place/3001+Stine+Rd,+Bakersfield,+CA+93309/@35.3285614,-119.057487,17z/data=!3m1!4b1!4m2!3m1!1s0x80ea41d1d60457b9:0x4543d42845bbd70a?hl=en" target="_blank">VIEW A MAP</a></p>
+
+                    </div>
+                </div>
+                <div class="footer">
+                    <div>
+                        Fellowship Baptist Church  -  Bakersfield, CA
+                        <br>
+                        <a href="https://www.facebook.com/pages/Fellowship-Baptist-Church-of-Bakersfield/111715038875349" target="_blank"><i class="fa fa-facebook"></i></a>
+                        <a href="https://twitter.com/fellowshipbapt" target="_blank"><i class="fa fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="about" ng-show="data.about == true">
+                <div class="about-selects">
+                    <div class="beliefs-select" ng-click="workers.beliefs()">
+                        BELIEFS
+                    </div>
+                    <div class="mission-select" ng-click="workers.mission()">
+                        MISSION
+                    </div>
+                    <div class="staff-select" ng-click="workers.staff()">
+                        STAFF
+                    </div>
+                </div>
+                <div class="about-section beliefs" ng-show="data.beliefs == true">
+                    <h2 class="about-center">BELIEFS:</h2>
+                    <h3>In essential beliefs - we have unity.</h3>
+                    <h4>"There is one Body and one Spirit...there is one Lord, one faith,
+                        one baptism, and one God and Father of us all..."&nbsp;
+                        <a href="https://www.biblegateway.com/passage/?search=Ephesians+4%3A4-6&version=NIV" target="_blank">Eph. 4:4-6</a>
+                    </h4>
+                    <h3>In non-essential beliefs - we have liberty.</h3>
+                    <h4>"Accept him whose faith is weak, without passing judgment on disputable matters...
+                        Who are you to judge someone else's servant?  To his own master he stands or falls...
+                        So then each of us will give an account of himself to God...
+                        So whatever you believe about these things keep between yourself and God."&nbsp;
+                        <a href="https://www.biblegateway.com/passage/?search=+Romans+14%3A1%2C4%2C12%2C22&version=NIV" target="_blank">Romans 14:1,4,12,22</a>
+                    </h4>
+                    <h3>In all our beliefs - we show charity.</h3>
+                    <h4>"...If I hold in my mind not only all human knowledge but also the very secrets of God,
+                        and if I have the faith that can move mountains - but have no love, I amount to nothing at all."&nbsp;
+                        <a href="https://www.biblegateway.com/passage/?search=1+Corinthians+13%3A2&version=NIV" target="_blank">1 Cor. 13:2</a>
+                    </h4>
+
+                    <h2 class="about-center">FBC'S ESSENTIAL BELIEFS</h2>
+                    <h3>About God:</h3>
+                    <h4>God is the Creator and Ruler of the universe.
+                        He has eternally existed in three personalities: the Father, the Son, and the Holy Spirit.
+                        These three are co-equal and are one God.
+                    </h4>
+                    <h4 class="about-center">
+                        <a href="https://www.biblegateway.com/passage/?search=Genesis+1%3A1%2C26%2C27%2C+3%3A22%3B+Psalm+90%3A2%3B+Matthew+28%3A19%3B+1+Peter+1%3A2%3B+2+Corinthians+13%3A14&version=NIV" target="_blank">
+                            Genesis 1:1,26,27,3:22; Psalm 90:2; Matthew 28:19; 1 Peter 1:2; 2 Corinthians 13:14
+                        </a>
+                    </h4>
+                    <h3>About Christ:</h3>
+                    <h4>Jesus Christ is the Son of God.  He is co-equal with the Father.
+                        Jesus lived a sinless human life and offered Himself as the perfect sacrifice for the sins of all people by dying on a cross.
+                        He arose from the dead after three days to demonstrate His power over sin and death.
+                        He ascended to Heaven's glory and will return again someday to earth to reign as King of Kings, and Lord of Lords.
+                    </h4>
+                    <h4 class="about-center">
+                        <a href="https://www.biblegateway.com/passage/?search=Matthew+1%3A22%2C+23%3B+Isaiah+9%3A6%3B+John+1%3A1-5%3B+14%3A10-30%3B+Hebrews+4%3A14%2C15%3B+1+Corinthians+15%3A3%2C4%3B+Romans+1%3A3%2C4%3B+Acts+1%3A9-11%3B+1+Timothy+6%3A14%2C15%3B+Titus+2%3A13&version=NIV" target="_blank">
+                            Matthew 1:22, 23; Isaiah 9:6; John 1:1-5;14:10-30; Hebrews 4:14,15; 1 Corinthians 15:3,4;
+                            Romans 1:3,4; Acts 1:9-11; 1 Timothy 6:14,15; Titus 2:13
+                        </a>
+                    </h4>
+                    <h3>About the Holy Spirit:</h3>
+                    <h4>The Holy Spirit is co-equal with the Father and the Son of God.
+                        He is present in the world to make men aware of their need for Jesus Christ.
+                        He also lives in every Christian from the moment of salvation.
+                        He provides the Christian with power for living, understanding of spiritual truth,
+                        and guidance in doing what is right.
+                        He gives every believer a spiritual gift when they are saved.
+                        As Christians, we seek to live under His control daily.
+                    </h4>
+                    <h4 class="about-center">
+                        <a href="https://www.biblegateway.com/passage/?search=2+Corinthians+3%3A17%3B+John+16%3A7-13%2C+14%3A16%2C17%3B+Acts+1%3A8%3B+1+Corinthians+2%3A12%2C+3%3A16%3B+Ephesians+1%3A13%3B+Galatians+5%3A25%3BEphesians+5%3A18&version=NIV" target="_blank">
+                            2 Corinthians 3:17; John 16:7-13, 14:16,17; Acts 1:8;
+                            1 Corinthians 2:12, 3:16; Ephesians 1:13; Galatians 5:25;
+                            Ephesians 5:18
+                        </a>
+                    </h4>
+                    <h3>About the Bible:</h3>
+                    <h4>The Bible is God's Word to us.
+                        It was written by human authors, under the supernatural guidance of the Holy Spirit.
+                        It is the supreme source of truth for Christian beliefs and living.
+                        Because it is inspired by God, it is the truth without any mixture of error.
+                    </h4>
+                    <h4 class="about-center">
+                        <a href="https://www.biblegateway.com/passage/?search=2+Timothy+3%3A16%3B++2+Peter+1%3A20%2C21%3B++2+Timothy+1%3A13%3B+Psalm+119%3A105%2C160%2C+12%3A6%3B++Proverbs+30%3A5&version=NIV" target="_blank">
+                            2 Timothy 3:16;  2 Peter 1:20,21;  2 Timothy 1:13; Psalm 119:105,160, 12:6;  Proverbs 30:5
+                        </a>
+                    </h4>
+                    <h3>About Human Beings:</h3>
+                    <h4>People are made in the spiritual image of God, to be like Him in character.
+                        People are the supreme object of God's creation.
+                        Although every person has tremendous potential for good,
+                        all of us are marred by an attitude of disobedience toward God called "sin".
+                        This attitude separates people from God and causes many problems in life.
+                    </h4>
+                    <h4 class="about-center">
+                        <a href="https://www.biblegateway.com/passage/?search=Genesis+1%3A27%3B+Psalm+8%3A3-6%3B+Isaiah+53%3A6%3B+Romans+3%3A23%3B+Isaiah+59%3A1%2C+2&version=NIV" target="_blank">
+                            Genesis 1:27; Psalm 8:3-6; Isaiah 53:6a; Romans 3:23; Isaiah 59:1, 2
+                        </a>
+                    </h4>
+                    <h3>About Salvation:</h3>
+                    <h4>Salvation is God's free gift to us but we must accept it.
+                        We can never make up for our sin by self-improvement or good works.
+                        Only by trusting in Jesus Christ as God's offer of forgiveness can anyone be saved from sin's penalty.
+                        When we turn from our self-ruled life and turn to Jesus in faith we are saved.
+                        Eternal life begins the moment one receives Jesus Christ into his life by faith.
+                    </h4>
+                    <h4 class="about-center">
+                        <a href="https://www.biblegateway.com/passage/?search=Romans+6%3A23%3B+Ephesians+2%3A8%2C9%3B+John+14%3A6%2C+1%3A12%3B+Titus+3%3A5%3B&version=NIV" target="_blank">
+                            Romans 6:23; Ephesians 2:8,9; John 14:6, 1:12; Titus 3:5;
+                        </a>
+                    </h4>
+                    <h3>About Eternal Security:</h3>
+                    <h4>Because God gives us eternal life through Jesus Christ,
+                        the true believer is secure in that salvation for eternity.
+                        If you have been genuinely saved, you cannot "lose" it.
+                        Salvation is maintained by the grace and power of God,
+                        not by the self-effort of the Christian.
+                        It is the grace and keeping power of God that gives us this security.
+                    </h4>
+                    <h4 class="about-center">
+                        <a href="https://www.biblegateway.com/passage/?search=John+10%3A28-30%3B+2+Timothy+1%3A12%3B+Hebrews+6%3A4-6%2C+7%3A25%2C+10%3A10%2C14%3B+1+Peter&version=NIV" target="_blank">
+                        John 10:28-30; 2 Timothy 1:12; Hebrews 6:4-6, 7:25, 10:10,14; 1 Peter
+                        </a>
+                    </h4>
+                </div>
+                <div class="about-section mission" ng-show="data.mission == true">
+                    <h2>MISSION</h2>
+                    <h3>OUR HOPE...</h3>
+                    <h4>" I will build my Church, and the gates of hell shall not prevail against it"</h4>
+                    <h4>"Looking for that blessed hope, and the glorious appearing of the great God and our Saviour, Jesus Christ"</h4>
+                    <h3>OUR HEART...</h3>
+                    <h4>To provide Kern County with a Church that is firmly committed to the Bible
+                        and which has a firm belief in it's authority for our lives as we evangelize,
+                        disciple and build families of one or more. We will emphasize children,
+                        teen and family building ministries through in-depth Bible teaching,
+                        discipleship and special events as well as providing a place to encounter God in regular meaningful worship.
+                    </h4>
+                </div>
+                <div class="about-section staff" ng-show="data.staff == true">
+                    <h2>Pastoral:</h2>
+                    <h2>Senior Pastor</h2>
+                    <img class="staff-photo" src="/images/9.jpg" width="80%" height="250" alt="Rick Prevost">
+                    <h3>Rick Prevost</h3>
+                    <h4 class="staff-read-more-rick" ng-show="!data.rick" ng-click="workers.rick()">Read More...</h4>
+                    <div class="staff-bio" ng-show="data.rick">
+                        <h3>Interests:</h3>
+                        <h4>Church Growth, Bible Prophecy, Bass Fishing,
+                            Barbecue, Oklahoma Sooner Football
+                        </h4>
+                        <h3>Education Background:</h3>
+                        <h4>Oklahoma Baptist University, Central State University,
+                            Moody Bible Institute, Criswell Bible School,
+                            Bethany Bible College & University
+                        </h4>
+                        <h3>Ministry Experience:</h3>
+                        <h4>President of California Southern Baptist Pastor Conference,
+                            Executive Board Member of California Southern Baptist,
+                            Director of Evangelism for Kern County Southern Baptist,
+                            Pastor in Oklahoma, Texas, Hawaii, California
+                        </h4>
+                        <h3>Favorite Music:</h3>
+                        <h4>Types: Christian, Oldie, Classic Rock, Blues</h4>
+                        <h4>Artists: Johnny Come Lately, Sanctus Real, Blufs,
+                            Leeland, Tenth Avenue North, Moody Blues, Pink Floyd,
+                            Led Zepplin Chicago, Newsboys, Howlin Wolfe, Beatles,
+                            Coldplay, IZ, Jethro Tull, PFR, Roger Whitaker,
+                        </h4>
+                        <h3>Favorite TV Shows:</h3>
+                        <h4>The Andy Griffith Show, The Twilight Zone, The Honeymooners,
+                            Alfred Hitchcock, Laurel and Hardy, Everybody Loves Raymond, Seinfield, 24
+                        </h4>
+                        <h3>Favorite Movies:</h3>
+                        <h4>Gettysburg, Lord Of The Rings, Alamo, Civil War by Ken Burns,
+                            Planet Earth, The Ten Commandments, Star Wars, Indiana Jones,
+                            Gods And Generals, Gospel of John, Jesus Video,
+                            Baseball by Ken Burns, Toy Story, Bugs Life, Batman,
+                            What about Bob?, Groundhog Day
+                        </h4>
+                        <h3>Favorite Books:</h3>
+                        <h4>Bible, John MacArthur Books, Warren Wiersbe Books,
+                        Electronic Books on Libronix
+                        </h4>
+                        <h3>Favorite Quotation:</h3>
+                        <h4>Are the things that we are living for worth Christ dying for?
+                            Leonard Ravenhill
+                        </h4>
+                        <h3>About Me:</h3>
+                        <h4>I love to be with my family and also my church family.
+                            I love my cat, smokey. I love to fish, watch OU football,
+                            grill and also eat some BBQ.
+                        </h4>
+                        <h3>Favorite Scripture:</h3>
+                        <h4>"But God, being rich in mercy,
+                            because of His great love with which He loved us."
+                            Ephesians 2:4
+                        </h4>
+                    </div>
+                    <h4 class="staff-read-less-rick" ng-show="data.rick" ng-click="workers.rick()">Read Less...</h4>
+                    <h2>Associate Pastor</h2>
+                    <h3>Ron Harvey</h3>
+                    <h2>Youth Intern</h2>
+                    <h3>Josh Newton</h3>
+                    <h2>Worship Ministries:</h2>
+                    <h2>Worship Minister</h2>
+                    <img class="staff-photo" src="/images/CharlieMcKay.jpg" width="80%" height="270" alt="Charlie McKay">
+                    <h3>Charles McKay</h3>
+                    <h4 class="staff-read-more-charlie" ng-show="!data.charlie" ng-click="workers.charlie()">Read More...</h4>
+                    <div class="staff-bio" ng-show="data.charlie">
+                        <h3>Family:</h3>
+                        <h4>Robin, my wife and singing partner for over 30 years</h4>
+                        <h4>Son Ryan and daughter-in-law Dyellen</h4>
+                        <h4>Son Michael and daughter Melissa</h4>
+                        <h4>Also Bella, Mason, Simon, and Trixie</h4>
+                        <h4>Granddogs Eden, Anara, Kaylee, and Pyro</h4>
+                        <h4>Hall of Fame:  Frosty, Brandy, Sheemie, Oreo and Breaker</h4>
+                        <h3>Greatest Influences:</h3>
+                        <h4>My Dad, Uncle Did, Rick Prevost, Bill Weber,
+                            and Larry Roberts (our music minister from college days)
+                        </h4>
+                        <h3>Favorite Music:</h3>
+                        <h4>Chris Tomlin, Southern Gospel, Anything 70s (except disco)
+                            -- I can't help it, it's my era
+                        </h4>
+                        <h3>Favorite Books:</h3>
+                        <h4>"Exploring the Book" by J. Sidlow Baxter,
+                            "The Hobbit" and "The Lord of the Rings" by J.R.R. Tolkien,
+                            anything by John McArthur or Warren Wiersbe
+                        </h4>
+                        <h4>I love "The Far Side", "Calvin and Hobbes", and "Dilbert"</h4>
+                        <h3>Favorite Places:</h3>
+                        <h4>Redwoods</h4>
+                        <h4>Central Coast</h4>
+                        <h4>Hart Flat</h4>
+                        <h4>Tempe AZ (where two of our kids are)</h4>
+                        <h3>Hobbies:</h3>
+                        <h4>Petroleum Engineering (just kidding), Camping,
+                            Reading, BBQ, Tree killing, weed whacking
+                        </h4>
+                        <h3>Foods:</h3>
+                        <h4>Gino's Pizza (the Chicago original),
+                            Jocko's, Chick Fil-A, Whataburger
+                            (wish we had some of these in CA),
+                            anything Pastor Rick or Dan Wolf BBQ's
+                        </h4>
+                        <h3>Relax:</h3>
+                        <h4>Saturday morning breakfasts</h4>
+                        <h4>Road trips with our travel buddies (you know who you are!)</h4>
+                        <h4>Annual Thanksgiving family and friends week at Lopez Lake</h4>
+                        <h4>Crossword puzzles (in ink)</h4>
+                    </div>
+                    <p class="staff-read-less-charlie" ng-show="data.charlie" ng-click="workers.charlie()">Read Less...</p>
+                </div>
+            </div>
+            <div class="ministries" ng-show="data.ministries == true">
+                <div class="ministries-selects">
+                    <div class="worship-select" ng-click="workers.worship()">
+                        WORSHIP
+                    </div>
+                    <div class="children-select" ng-click="workers.children()">
+                        CHILDREN
+                    </div>
+                    <div class="students-select" ng-click="workers.students()">
+                        STUDENTS
+                    </div>
+                    <div class="college-select" ng-click="workers.college()">
+                        COLLEGE
+                    </div>
+                    <div class="adults-select" ng-click="workers.adults()">
+                        ADULTS
+                    </div>
+                </div>
+                <div class="ministries-section worship" ng-show="data.worship">
+                    <h2>Worship</h2>
+                    <div class="text-container">
+                    <h4>Celebration Choir is at 6:30 pm in the Choir Rm this is the time to join in.</h4>
+                    <h4>Contact Charlie McKay, Worship Ministry.</h4>
+                    </div>
+                </div>
+                <div class="ministries-section children" ng-show="data.children">
+                    <h2>Children</h2>
+                    <div class="text-container">
+                    <h4>Adventure Kid's Zone is a dynamic, integral part of Fellowship Baptist Church!</h4>
+                    <h4>Adventure Kid's is our children's ministry that serves all children from birth
+                        through 6th grade.
+                    </h4>
+                    <h4>Our mission is to provide children with opportunities and an environment
+                        where they can discover and better understand the truth of God's Word
+                        in fun and exciting ways.
+                    </h4>
+                    <h4>We accomplish this by providing a variety of experiences that are engaging
+                        to children of all ages; by focusing on building relationships with each child;
+                        by working together with the family and providing them with the tools they need;
+                        and most importantly, by having a blast!
+                    </h4>
+                    <h3>Children's Programs Include:</h3>
+                    <h3>Sundays:</h3>
+                    <h4>9:30 am   ~  Bible Study</h4>
+                    <h4>5pm - RA's/GA's/MF's for (3yrs-6th Grades) studying about Missions</h4>
+                    <h3>Wednesdays:</h3>
+                    <h4>6:00 pm  ~  Awana Club</h4>
+
+                    <h4>For more information on any of our Children's or Preschool programs
+                        or events please call the church office at<br>
+                        <a href="tel:16618334345">(661) 833-4345</a><br>
+                        or email us at<br>
+                        <a href="mailto:office@myfellowshipbaptist.com">
+                            office@myfellowshipbaptist.com
+                        </a>.
+                    </h4>
+                    </div>
+                </div>
+                <div class="ministries-section students" ng-show="data.students">
+                    <h2>STUDENTS</h2>
+                    <img src="/images/YouthIgnite.gif" width="400" height="350" alt="Youth Ignite">
+                    <div class="text-container">
+                    <h3>
+                        YOUTH IGNITE!
+                    </h3>
+                    <h4>
+                        is based on the desire for students to have a Passion &
+                        to live a life for Christ:
+                    </h4>
+                    <h4>
+                        The vision of this ministry is to see students come into an intimate
+                        relationship with God through Christ and be consumed with bringing
+                        glory to Him.
+                    </h4>
+                    <h4>
+                        We desire to carry out this vision by investing in the lives of
+                        students with the purpose of them coming to a saving knowledge
+                        of Christ.
+                    </h4>
+                    <h4>
+                        We intentionally share the gospel and continually pray that
+                        students will grasp Christ's love for them.
+                    </h4>
+                    <h4>We try to incorporate an atmosphere which would prepare students
+                        to be open to God's message.
+                    </h4>
+                    <h4>We then want to help students recognize their purpose in life
+                            and provide them with opportunities to serve and invest
+                            in the lives of others.
+                    </h4>
+                    <h4>
+                        For more info please contact
+                        <br>
+                        <a href="mailto:office@myfellowshipbaptist.com">
+                            office@myfellowshipbaptist.com
+                        </a>.
+                    </h4>
+                    </div>
+                </div>
+                <div class="ministries-section college" ng-show="data.college">
+                    <h2>COLLEGE</h2>
+                    <div class="text-container">
+                        <h3>Young Adults</h3>
+                        <h4>18-32 years old...</h4>
+                        <h4>Jake Trotter is Leading the Class</h4>
+                        <h4>We have moved to the Conference Room in the Office area.</h4>
+                        <h4>Come this Sunday and join us!</h4>
+                        <h4>Your input is needed.</h4>
+                        <h4>Bring a friend, we have plenty of room.</h4>
+                    </div>
+                </div>
+                <div class="ministries-section adults" ng-show="data.adults">
+                    <h2>ADULTS</h2>
+                    <div class="text-container">
+                        <h4>At Fellowship Baptist Church we realize how important it is
+                            for people to get connected.
+                        </h4>
+                        <h4>We offer two different ways for people to get connected
+                            through our Adult Bible Fellowship Classes or Home Groups.
+                        </h4>
+                        <h4>On Sunday Mornings our Adult Bible Fellowship Classes
+                            are a wonderful place to study God's Word and fellowship
+                            together with other believers.
+                        </h4>
+                        <h4>These classes are divided up by age.
+                        </h4>
+                        <h4>To find out more information about our Adult Bible
+                            Fellowship Classes or to visit one please join us
+                            Sunday at 9:30 am or email us at<br>
+                            <a href="mailto:office@myfellowshipbaptist.com">
+                                office@myfellowshipbaptist.com
+                            </a>.
+                        </h4>
+                        <h4>In addition to Adult Bible Fellowships we also offer,
+                            we have a Home Group which meets in Hart Flat once a
+                            week on Thursday.
+                        </h4>
+                        <h4>At Fellowship Baptist we believe that lives can be
+                            formed and transformed in small groups.
+                        </h4>
+                        <h4>Making life-to-life connections can change lives when
+                            people meet to laugh, learn, and do-life-together.
+                        </h4>
+                        <h4>Call the church office for information on the Taft group.</h4>
+                        <h3>In a Home Group you can expect to:</h3>
+                        <h3>Laugh Together:</h3>
+                        <h4>Share in the joy-filled life God intends.</h4>
+                        <h3>Learn Together:</h3>
+                        <h4>Study and apply God's Word.</h4>
+                        <h3>Do-Life-Together:</h3>
+                        <h4>Build meaningful relationships.</h4>
+                        <br>
+                        <h4>Currently, we have a variety of different groups meeting;
+                            singles, married couples, and mixed groups.
+                        </h4>
+                        <h4>New groups are continually forming.
+                        </h4>
+                        <h4>To get connected to the right Home Group for you,
+                            email<br>
+                            <a href="mailto:office@myfellowshipbaptist.com">
+                                office@myfellowshipbaptist.com</a>
+                            .
+                        </h4>
+                    </div>
+                </div>
+            </div>
+            <div class="media" ng-show="data.media == true">
+                <h2>Media: </h2>
+                <div class="media-selects">
+                    <div class="media-audio-select" ng-click="workers.audio()">
+                        AUDIO
+                    </div>
+                    <div class="media-video-select" ng-click="workers.video()">
+                        VIDEO
+                    </div>
+                </div>
+                <div class="audio-container" ng-show="data.audio == true">
+                    <p>Listen to past services here:</p>
+                    <iframe width="95%" height="200" scrolling="no" frameborder="no"
+                            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/132910515&amp;auto_play=false&amp;hide_related=true&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=false">
+                    </iframe>
+                </div>
+                <div class="video-container" ng-show="data.videos == true">
+                    <p>Watch past services here:</p>
+                    <iframe class="media-video"
+                            src="https://www.youtube.com/embed/FRbS_5oE-nw?list=PLKeY1w_4YiwrmzQPTG3niVnzSMdKwYZOV"
+                            frameborder="0" allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+            <div class="giving" ng-show="data.giving == true">
+                <div class="giving-section">
+                    <h2>Tithes & Offerings</h2>
+                    <br>
+                    <div class="text-container">
+                        <h4>At Fellowship Baptist Church, we believe that our commitment to giving
+                            financially says as much about our spiritual maturity as does our
+                            commitment to worship, Bible study, prayer, serving and community.
+                        </h4>
+                        <h4>Therefore, we are excited to make available to our members the
+                            convenient option of giving online.
+                        </h4>
+                        <h4>Giving financially to the church is not the equivalent of paying
+                            membership dues.
+                        </h4>
+                        <h4>In fact, it is a spiritual act of trust, obedience, and worship to God.
+                        </h4>
+                        <h4>"Do not store up for yourselves treasures on earth,
+                            where moth and rust destroy,
+                            and where thieves break in and steal.
+                        </h4>
+                        <h4>But store up for yourselves treasures in heaven,
+                            where moth and rust do not destroy,
+                            and where thieves do not break in and steal.
+                        </h4>
+                        <h4>For where your treasure is, there your heart will be also." (Matthew 6:19-21)
+                        </h4>
+
+                        <div class="giving-faqs">
+                            <h3 ng-click="workers.givingFAQS()">Online Giving FAQs</h3>
+                            <div class="giving-info" ng-show="data.givingFAQS">
+                                <h4><strong>Q:</strong> Who do I talk to if I have questions?</h4>
+                                <h4>Please email Lanny Lloyd or call him at the church office
+                                    at <a href="tel:16618334345">661.833.4345</a>.
+                                </h4>
+                                <br>
+                                <h4><strong>Q:</strong> How do I give online?</h4>
+                                <h4>We are excited to make available to our members the
+                                    convenient option of giving online.
+                                    Simply fillout all the information asked for on the
+                                    step-by-step process.
+                                    You will eventially be offerred the opportunity to
+                                    give your tithe or offering by providing your
+                                    debit card,credit card, or checking account information.
+                                </h4>
+                                <br>
+                                <h4><strong>Q:</strong> Will the church have or see my bank
+                                    account or credit card numbers?
+                                </h4>
+                                <h4>NO. Our online banking system Paypal,
+                                    securly handles all of your private banking information.
+                                    Our book keeper will only be informed of the amount you
+                                    have given, just as if you were placing it in the
+                                    physical offering plate on Sunday Morning.
+                                </h4>
+                                <br>
+                                <h4><strong>Q:</strong> How can funds be withdrawn directly
+                                    from my account?
+                                </h4>
+                                <h4>Only with your authorization.
+                                    No one can deduct money from your account automatically
+                                    unless you specifically authorize it.
+                                    Our online giving page works just like ebay or
+                                    amazon.com only deducting the amount you type in.
+                                </h4>
+                                <br>
+                                <h4><strong>Q:</strong> Are electronic contributions risky?
+                                </h4>
+                                <h4>No. An electronic contribution is safer than writing a check,
+                                    and it can't be lost, stolen or destroyed in the mail.
+                                    All Electronic Fund Transfer (EFT) transactions are
+                                    governed by strict national rules and guidelines.
+                                    Over four billion EFT transactions are processed annually
+                                    in the United States.
+                                </h4>
+                                <br>
+                                <h4><strong>Q:</strong> When would this automatic contribution
+                                    be taken from my account?
+                                </h4>
+                                <h4>The transaction will occur on the next banking day.
+                                </h4>
+                                <br>
+                                <h4><strong>Q:</strong> Can I test this by giving one time?
+                                </h4>
+                                <h4>Yes.  The benefit of giving online is that you can give
+                                    when it is convenient for you.
+                                    Whether your at home, work, or on vacation.
+                                </h4>
+                                <br>
+                                <h4><strong>Q:</strong> If I don't write checks,
+                                    how do I keep my checkbook balance straight?
+                                </h4>
+                                <h4>You can deduct the amount from your check record
+                                    when you make the online giving trasaction just as
+                                    if you had just written a physical check.
+                                </h4>
+                                <br>
+                                <h4><strong>Q:</strong> When it comes to credit card giving,
+                                    are you concerned about people with debt problems?
+                                </h4>
+                                <h4>There is no question that the abuse of credit cards can
+                                    cause serious debt and an accompanying
+                                    range of personal strife.
+                                    However, there are people who have disciplined themselves
+                                    to wield credit cards in a God-honoring way.
+                                    We would not have offered credit card giving if we hadn't
+                                    set up the account-to-account EFT option.
+                                    If you don't have control of your credit card spending,
+                                    do not use the credit card option for giving.
+                                    Instead, pursue a better understanding of God's
+                                    plan for your finances through completion one of
+                                    our Grown Ministries Enrichment Classes or by seeking
+                                    professional financial advice.
+                                </h4>
+                                <br>
+                                <h4><strong>Q:</strong> How can I keep a record of the amount
+                                    I have contributed?
+                                </h4>
+                                <h4>Your bank and/or credit card statements will include an
+                                    itemized list of gifts given from your account.
+                                    We will continue to provide you with a personal giving
+                                    statement for your tax records.
+                                </h4>
+                                <br>
+                                <h4><strong>Q:</strong> Is there any charge to me from my bank
+                                    to give online?
+                                </h4>
+                                <h4>No. Electronic funds transfers carry no bank fees for you.
+                                    The Church does pay a modest fee for providing you with this
+                                    more convenient way of giving.
+                                </h4>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+                <div class="give">
+                    <h2>GIVE NOW</h2>
+                </div>
+            </div>
+        </div>
+        <div id="bottom">
+            <span><i class="fa fa-twitter"></i></span>
+            <div id="bottom-outer">
+                <ul rn-carousel rn-carousel-auto-slide="8" rn-carousel-easing="elastic" id="bottom-container">
+                    <li ng-repeat="tweet in data.tweets">
+                        <div>
+                            <img class="tweet-pic" ng-src="{{tweet.img}}" width="50" height="50">
+                        </div>
+                        <a ng-href="{{tweet.href}}" target="_blank">
+                            <div class="tweet-text"><strong>{{tweet.text}}</strong></div>
+                        </a>
+                    <li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
